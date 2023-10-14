@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnlwmkoyx4s8k"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_dnueo"]
+[ext_resource type="Texture2D" uid="uid://dtd8mnt3fpqf6" path="res://sprites/player/player.png" id="2_ugm8b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gtpdy"]
+radius = 64.0312
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_dnueo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_ugm8b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 36)
+shape = SubResource("CircleShape2D_gtpdy")
+
+[node name="ShootCoolDownTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="GrenadeReloadTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="ShootMarker" type="Marker2D" parent="."]
+position = Vector2(90, 19)
