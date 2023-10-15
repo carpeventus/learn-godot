@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed := 300.0
+@export var move_speed := 500.0
 
 #region onready nodes
 @onready var shoot_cool_down_timer: Timer = $ShootCoolDownTimer

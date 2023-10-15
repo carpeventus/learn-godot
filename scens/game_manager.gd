@@ -30,5 +30,5 @@ func generate_laser(player_positon : Vector2, direction : Vector2) -> void:
 func generate_grenade(player_positon : Vector2, direction : Vector2) -> void:
 	var grenade = grenade_scene.instantiate() as Grenade
 	grenade.position = player_positon
-	grenade.linear_velocity = direction * 200
+	grenade.linear_velocity = direction * grenade.speed
 	$Projectiles.add_child(grenade)
