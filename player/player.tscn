@@ -1,10 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnlwmkoyx4s8k"]
+[gd_scene load_steps=6 format=3 uid="uid://dnlwmkoyx4s8k"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_dnueo"]
 [ext_resource type="Texture2D" uid="uid://dtd8mnt3fpqf6" path="res://sprites/player/player.png" id="2_ugm8b"]
+[ext_resource type="Texture2D" uid="uid://bxc7nlmco2msh" path="res://sprites/decals/white.png" id="3_r25sc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtpdy"]
 radius = 64.0312
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_godxk"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 750.0
+initial_velocity_max = 900.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.3
+scale_max = 0.8
+color = Color(0.0980392, 0.705882, 0.968627, 0.72549)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -29,3 +44,11 @@ one_shot = true
 
 [node name="ShootMarker" type="Marker2D" parent="."]
 position = Vector2(90, 19)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(122, 20)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_godxk")
+texture = ExtResource("3_r25sc")
+lifetime = 0.2
+one_shot = true

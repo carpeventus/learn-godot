@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bujrlyldyvu8j"]
+[gd_scene load_steps=18 format=3 uid="uid://bujrlyldyvu8j"]
 
 [ext_resource type="PackedScene" uid="uid://d0i3mjcvtcihc" path="res://env/gate.tscn" id="1_jliv3"]
 [ext_resource type="PackedScene" uid="uid://dnlwmkoyx4s8k" path="res://player/player.tscn" id="1_r23ss"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://nxckjg6plpex" path="res://sprites/decals/moss/moss_3.png" id="6_r3eo0"]
 [ext_resource type="Texture2D" uid="uid://bd8q0aox1vej" path="res://sprites/decals/moss/moss_4.png" id="7_3751y"]
 [ext_resource type="Texture2D" uid="uid://d2gtoyxg410pj" path="res://sprites/decals/moss/moss_5.png" id="8_2lvog"]
+[ext_resource type="PackedScene" uid="uid://b6mkv6ur0u0ee" path="res://env/steam_vent.tscn" id="9_bv18f"]
 [ext_resource type="PackedScene" uid="uid://dhw1fr265vk5o" path="res://env/house.tscn" id="14_jfru2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m5ixy"]
@@ -126,6 +127,9 @@ texture = ExtResource("7_3751y")
 [node name="Sprite2D5" type="Sprite2D" parent="Ground"]
 position = Vector2(2581, 2515)
 texture = ExtResource("8_2lvog")
+
+[node name="SteamVent" parent="Ground" instance=ExtResource("9_bv18f")]
+position = Vector2(634, 727)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_d2kkw")

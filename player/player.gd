@@ -50,6 +50,7 @@ func handle_input() -> void:
 		
 
 func shoot() -> void:
+	$GPUParticles2D.emitting = true
 	can_shoot = false;
 	var player_direction = (get_global_mouse_position() - global_position).normalized()
 	laser_shooted.emit($ShootMarker.global_position, player_direction)
