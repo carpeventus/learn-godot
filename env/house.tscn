@@ -1,6 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhw1fr265vk5o"]
+[gd_scene load_steps=11 format=3 uid="uid://dhw1fr265vk5o"]
 
 [ext_resource type="Texture2D" uid="uid://lopdjovggcc4" path="res://sprites/tilesets/interior.png" id="1_iufyo"]
+[ext_resource type="PackedScene" uid="uid://bt4py5uahao1u" path="res://env/simple_light.tscn" id="2_fdx2y"]
+[ext_resource type="PackedScene" uid="uid://cbxaoo18veqou" path="res://env/lignt_fan_animation.tscn" id="3_oi0eb"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ipnp7"]
+polygon = PackedVector2Array(76.3676, -195, 74.9533, 195, -74.9533, 195, -76.3675, -195)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wwp7w"]
+polygon = PackedVector2Array(-195, -76.3676, 195, -74.9533, 195, 74.9533, -195, 76.3675)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kwc2c"]
+polygon = PackedVector2Array(-195, -76.3676, 195, -74.9533, 195, 74.9533, -195, 76.3675)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_olxsl"]
+polygon = PackedVector2Array(76.3676, -195, 74.9533, 195, -74.9533, 195, -76.3675, -195)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dcxjh"]
 texture = ExtResource("1_iufyo")
@@ -19,6 +33,7 @@ texture_region_size = Vector2i(390, 390)
 3:0/0/physics_layer_0/angular_velocity = 0.0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, 28, 78, -44, 195, -72, 195, 46, 102, 82, 68, 195, -68, 195)
 4:0/0 = 0
+4:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_wwp7w")
 4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:0/0/physics_layer_0/angular_velocity = 0.0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-195, -78, 195, -72, 195, 80, -195, 80)
@@ -39,10 +54,12 @@ texture_region_size = Vector2i(390, 390)
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
 3:1/0 = 0
+3:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ipnp7")
 3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:1/0/physics_layer_0/angular_velocity = 0.0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-72, -195, 74, -195, 80, 195, -72, 195)
 5:1/0 = 0
+5:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_olxsl")
 5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:1/0/physics_layer_0/angular_velocity = 0.0
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-72, -195, 74, -195, 80, 195, -72, 195)
@@ -63,6 +80,7 @@ texture_region_size = Vector2i(390, 390)
 3:2/0/physics_layer_0/angular_velocity = 0.0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-70, -195, 66, -195, 104, -112, 195, -58, 195, 66, 144, 60, 60, 46, -28, -48)
 4:2/0 = 0
+4:2/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_kwc2c")
 4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:2/0/physics_layer_0/angular_velocity = 0.0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-195, -78, 195, -72, 195, 80, -195, 80)
@@ -157,6 +175,7 @@ texture_region_size = Vector2i(390, 390)
 
 [sub_resource type="TileSet" id="TileSet_bgpt8"]
 tile_size = Vector2i(390, 390)
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 23
 sources/1 = SubResource("TileSetAtlasSource_dcxjh")
@@ -191,3 +210,28 @@ layer_2/tile_data = PackedInt32Array(-196612, 196609, 0, -196611, 262145, 0, -19
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_3q6oi")
+
+[node name="SimpleLight" parent="." instance=ExtResource("2_fdx2y")]
+position = Vector2(1285, 40)
+rotation = 1.5708
+
+[node name="SimpleLight2" parent="." instance=ExtResource("2_fdx2y")]
+position = Vector2(140, 1283)
+rotation = 3.14159
+
+[node name="SimpleLight3" parent="." instance=ExtResource("2_fdx2y")]
+position = Vector2(-801, -1267)
+
+[node name="SimpleLight4" parent="." instance=ExtResource("2_fdx2y")]
+position = Vector2(-1282, 62)
+rotation = -1.5708
+
+[node name="SimpleLight5" parent="." instance=ExtResource("2_fdx2y")]
+position = Vector2(1283, 817)
+rotation = 1.5708
+
+[node name="LigntFanAnimation" parent="." instance=ExtResource("3_oi0eb")]
+position = Vector2(597, 571)
+
+[node name="LigntFanAnimation2" parent="." instance=ExtResource("3_oi0eb")]
+position = Vector2(215, -592)

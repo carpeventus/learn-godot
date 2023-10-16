@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv0hlklb7223v"]
+[gd_scene load_steps=11 format=3 uid="uid://dv0hlklb7223v"]
 
 [ext_resource type="Script" path="res://player/weapons/grenade.gd" id="1_tunqa"]
 [ext_resource type="Texture2D" uid="uid://c4q58bb0mx4id" path="res://sprites/projectiles/grenade.png" id="2_mnxty"]
+[ext_resource type="Texture2D" uid="uid://bk83u27vcadi2" path="res://sprites/explosions/explosion_3.png" id="3_ypuqq"]
+[ext_resource type="Texture2D" uid="uid://c7hgicpo1k6hl" path="res://sprites/lights/textures/circle.png" id="4_7bw17"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8f1lr"]
 friction = 10.0
@@ -10,6 +12,102 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_0c5xm"]
 radius = 23.0
 
+[sub_resource type="Animation" id="Animation_73c4t"]
+resource_name = "explosion"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-1.05, -0.95, -0.85, -0.75, -0.65, -0.55, -0.45, -0.35, -0.25, -0.15, -0.05, 0.05, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95, 1.05, 1.15, 1.25, 1.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 57]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_esiyt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_42o2j"]
+resource_name = "alert"
+length = 2.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 20.0, 0.0, 20.0, 0.0, 20.0, 0.0, 20.0, 0.0, 20.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explosion"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6fomq"]
+_data = {
+"RESET": SubResource("Animation_esiyt"),
+"alert": SubResource("Animation_42o2j"),
+"explosion": SubResource("Animation_73c4t")
+}
+
 [node name="Grenade" type="RigidBody2D"]
 collision_layer = 16
 collision_mask = 23
@@ -17,9 +115,25 @@ physics_material_override = SubResource("PhysicsMaterial_8f1lr")
 gravity_scale = 2.66454e-15
 script = ExtResource("1_tunqa")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0c5xm")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_mnxty")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_0c5xm")
+[node name="Explosion" type="Sprite2D" parent="."]
+texture = ExtResource("3_ypuqq")
+hframes = 8
+vframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "alert"
+libraries = {
+"": SubResource("AnimationLibrary_6fomq")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.0
+texture = ExtResource("4_7bw17")
+texture_scale = 0.02

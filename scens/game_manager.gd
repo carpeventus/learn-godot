@@ -25,8 +25,6 @@ func generate_laser(player_positon : Vector2, direction : Vector2) -> void:
 	laser.change_direction(direction)
 	$Projectiles.add_child(laser)
 
-
-
 func generate_grenade(player_positon : Vector2, direction : Vector2) -> void:
 	var grenade = grenade_scene.instantiate() as Grenade
 	grenade.position = player_positon
