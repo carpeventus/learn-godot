@@ -1,14 +1,11 @@
 extends CharacterBody2D
 
-@export var move_speed := 500.0
+@export var max_speed := 500.0
+var move_speed :float = max_speed
 
 #region onready nodes
 @onready var shoot_cool_down_timer: Timer = $ShootCoolDownTimer
 @onready var grenade_reload_timer: Timer = $GrenadeReloadTimer
-#endregion
-
-#region packed scenes
-
 #endregion
 
 #region signal

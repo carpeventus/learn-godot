@@ -10,6 +10,7 @@ height = 190.0
 polygon = PackedVector2Array(-76, 13, -86, 14, -95, 8, -98, -1, -92, -11, -78, -17, 76, -17, 91, -12, 97, -5, 97, 5, 91, 12, 77, 15, 76, -4, -74, -6)
 
 [node name="SimpleLight" type="StaticBody2D"]
+collision_mask = 22
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

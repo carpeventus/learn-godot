@@ -155,13 +155,11 @@ position = Vector2(171, 1419)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_left_margin = 0.5
-drag_top_margin = 0.5
-drag_right_margin = 0.5
-drag_bottom_margin = 0.5
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
+[connection signal="player_enter_house" from="House" to="." method="_on_house_player_enter_house"]
+[connection signal="player_exited_house" from="House" to="." method="_on_house_player_exited_house"]
 [connection signal="gate_entered" from="Gate" to="." method="_on_gate_gate_entered"]
 [connection signal="grenade_throwed" from="Player" to="." method="_on_player_grenade_throwed"]
 [connection signal="laser_shooted" from="Player" to="." method="_on_player_laser_shooted"]
