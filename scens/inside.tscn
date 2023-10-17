@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgrd4ltde4w28"]
+
+[ext_resource type="PackedScene" uid="uid://bujrlyldyvu8j" path="res://scens/level.tscn" id="1_ki46x"]
+[ext_resource type="PackedScene" uid="uid://dhw1fr265vk5o" path="res://env/house.tscn" id="2_3aueq"]
+[ext_resource type="Script" path="res://scens/inside.gd" id="2_614xl"]
+[ext_resource type="Texture2D" uid="uid://cmkpw8bd6pb2n" path="res://sprites/ground/dirt.png" id="3_d1o0m"]
+[ext_resource type="Texture2D" uid="uid://c7hgicpo1k6hl" path="res://sprites/lights/textures/circle.png" id="5_3ehhd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8cys"]
+size = Vector2(812, 156)
+
+[node name="Inside" instance=ExtResource("1_ki46x")]
+script = ExtResource("2_614xl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" index="0"]
+texture_repeat = 2
+texture = ExtResource("3_d1o0m")
+region_enabled = true
+region_rect = Rect2(-2124.75, -1112.75, 7000, 5000)
+
+[node name="House" parent="." index="1" instance=ExtResource("2_3aueq")]
+
+[node name="Player" parent="." index="2"]
+position = Vector2(712, 1056)
+
+[node name="PointLight2D" type="PointLight2D" parent="Player" index="8"]
+texture = ExtResource("5_3ehhd")
+
+[node name="Camera2D" parent="." index="4"]
+position = Vector2(712, 1056)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="5"]
+color = Color(0.32549, 0.572549, 1, 0.364706)
+blend_mode = 1
+
+[node name="ExitedArea" type="Area2D" parent="." index="6"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitedArea" index="0"]
+position = Vector2(805, 1249)
+shape = SubResource("RectangleShape2D_a8cys")
+
+[connection signal="body_entered" from="House" to="." method="_on_house_player_enter_house"]
+[connection signal="body_exited" from="House" to="." method="_on_house_player_exited_house"]
+[connection signal="body_entered" from="ExitedArea" to="." method="_on_exited_area_body_entered"]
