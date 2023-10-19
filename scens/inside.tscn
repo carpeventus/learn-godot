@@ -39,10 +39,10 @@ collision_mask = 2
 position = Vector2(805, 1298)
 shape = SubResource("RectangleShape2D_a8cys")
 
-[node name="Camera2D" parent="." index="7"]
-position = Vector2(712, 1056)
-
 [node name="Item" parent="." index="8" instance=ExtResource("6_sewp5")]
+
+[node name="Camera2D" parent="." index="9"]
+position = Vector2(712, 1056)
 
 [connection signal="body_entered" from="House" to="." method="_on_house_player_enter_house"]
 [connection signal="body_exited" from="House" to="." method="_on_house_player_exited_house"]

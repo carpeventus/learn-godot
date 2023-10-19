@@ -23,7 +23,6 @@ func update_laser_amount() -> void:
 	update_color(Global.laser_amount, laser_label, laser_rect)
 
 func update_health_progress() -> void:
-	print("entr progress")
 	health_bar.value = Global.health
 	
 
