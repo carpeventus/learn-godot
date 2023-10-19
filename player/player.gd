@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @export var max_speed := 500.0
 var move_speed :float = max_speed
@@ -47,6 +47,10 @@ func handle_input() -> void:
 		
 
 func shoot() -> void:
+	if Global.laser_amount <= 0:
+		return
+		
+	Global.laser_amount = max(Global.laser_amount - 1, 0)
 	$GPUParticles2D.emitting = true
 	can_shoot = false;
 	var player_direction = (get_global_mouse_position() - global_position).normalized()
@@ -56,11 +60,22 @@ func shoot() -> void:
 	can_shoot = true
 	
 	
-
 func grenade() -> void:
+	if Global.grenade_amount <= 0:
+		return
+	Global.grenade_amount = max(Global.grenade_amount - 1, 0)
 	grenade_reload_timer.start()
 	can_grenade = false;
 	var player_direction = (get_global_mouse_position() - global_position).normalized()
 	grenade_throwed.emit($ShootMarker.global_position, player_direction)
 	await grenade_reload_timer.timeout
 	can_grenade = true
+
+func add_item(item : Item.ItemOption) -> void:
+	match item:
+		Item.ItemOption.LASER:
+			Global.laser_amount += 5
+		Item.ItemOption.GRENADE:
+			Global.grenade_amount += 1
+		Item.ItemOption.HEALTH:
+			Global.health += 10

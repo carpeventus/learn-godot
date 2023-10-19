@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dv4hx2ub14jfa"]
+[gd_scene load_steps=15 format=3 uid="uid://dv4hx2ub14jfa"]
 
 [ext_resource type="PackedScene" uid="uid://bujrlyldyvu8j" path="res://scens/level.tscn" id="1_mmcix"]
 [ext_resource type="Texture2D" uid="uid://c36x33036fvtv" path="res://sprites/ground/stones.png" id="2_6ilep"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b6mkv6ur0u0ee" path="res://env/steam_vent.tscn" id="9_upoei"]
 [ext_resource type="PackedScene" uid="uid://cdjrt4m6egm48" path="res://item/toilet.tscn" id="12_13314"]
 [ext_resource type="PackedScene" uid="uid://cffoay7f6hgk" path="res://item/crate.tscn" id="13_wib8w"]
+[ext_resource type="PackedScene" uid="uid://dxedg04oxkvtf" path="res://items/item.tscn" id="14_5gpur"]
 
 [node name="Outside" instance=ExtResource("1_mmcix")]
 script = ExtResource("2_j3021")
@@ -56,9 +57,6 @@ texture = ExtResource("8_mkn23")
 [node name="SteamVent" parent="Ground" index="8" instance=ExtResource("9_upoei")]
 position = Vector2(634, 727)
 
-[node name="Player" parent="." index="1"]
-position = Vector2(977, 645)
-
 [node name="Gate" parent="." index="2" instance=ExtResource("2_80an4")]
 position = Vector2(946, 170)
 
@@ -68,7 +66,13 @@ position = Vector2(164, 1110)
 [node name="Crate" parent="." index="4" instance=ExtResource("13_wib8w")]
 position = Vector2(-322, 1252)
 
-[node name="Camera2D" parent="." index="6"]
+[node name="Player" parent="." index="5"]
 position = Vector2(977, 645)
+
+[node name="Camera2D" parent="." index="7"]
+position = Vector2(977, 645)
+
+[node name="Item" parent="." index="8" instance=ExtResource("14_5gpur")]
+position = Vector2(923, 865)
 
 [connection signal="gate_entered" from="Gate" to="." method="_on_gate_gate_entered"]

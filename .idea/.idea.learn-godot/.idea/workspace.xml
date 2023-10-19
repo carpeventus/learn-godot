@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d60573ba-652f-4a5e-afcc-60c15100b989" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/player/player.gd" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scens/game_manager.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scens/game_manager.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scens/inside.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scens/inside.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scens/inside.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scens/inside.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scens/level.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scens/level.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scens/outside.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scens/outside.tscn" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2WvChOjzRrmelNKgNaabb7wlO8W" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/sunhaiyu/Library/Application Support/JetBrains/Rider2023.2/resharper-host/DecompilerCache",
+      "/Users/sunhaiyu/Library/Application Support/JetBrains/Rider2023.2/resharper-host/SourcesCache",
+      "/Users/sunhaiyu/.local/share/Symbols/src"
+    ]
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d60573ba-652f-4a5e-afcc-60c15100b989" name="Changes" comment="" />
+      <created>1697603787376</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1697603787376</updated>
+      <workItem from="1697603790370" duration="375000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
