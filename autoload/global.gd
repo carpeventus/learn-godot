@@ -15,6 +15,10 @@ var grenade_amount := 5:
 
 var health := 50:
 	set(value):
+		if value >= 100:
+			value = 100
+		if value <= 0:
+			value = 0
 		health = value
 		stat_changed.emit()
 		

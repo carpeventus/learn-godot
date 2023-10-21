@@ -21,12 +21,6 @@ region_rect = Rect2(-2124.75, -1112.75, 7000, 5000)
 
 [node name="House" parent="." index="2" instance=ExtResource("2_3aueq")]
 
-[node name="Player" parent="." index="3"]
-position = Vector2(712, 1056)
-
-[node name="PointLight2D" type="PointLight2D" parent="Player" index="8"]
-texture = ExtResource("5_3ehhd")
-
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="5"]
 color = Color(0.32549, 0.572549, 1, 0.364706)
 blend_mode = 1
@@ -38,6 +32,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitedArea" index="0"]
 position = Vector2(805, 1298)
 shape = SubResource("RectangleShape2D_a8cys")
+
+[node name="Player" parent="." index="7"]
+position = Vector2(712, 1056)
+
+[node name="PointLight2D" type="PointLight2D" parent="Player" index="7"]
+texture = ExtResource("5_3ehhd")
 
 [node name="Item" parent="." index="8" instance=ExtResource("6_sewp5")]
 

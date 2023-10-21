@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://dbsw45w8dldqe"]
+
+[ext_resource type="Texture2D" uid="uid://codatawlogtx5" path="res://sprites/enemies/scout.png" id="1_gmdf3"]
+[ext_resource type="Script" path="res://enemies/scout.gd" id="1_obbqv"]
+[ext_resource type="Shader" path="res://shaders/scout.gdshader" id="2_xyb8g"]
+[ext_resource type="Texture2D" uid="uid://tpa4fxucenym" path="res://sprites/explosions/grunge.png" id="4_nu6j0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_deitb"]
+radius = 51.0098
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymsuh"]
+shader = ExtResource("2_xyb8g")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/progress = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5cgry"]
+radius = 477.105
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5hmrn"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_iiq46"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.102957), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eclgj"]
+curve = SubResource("Curve_iiq46")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tob00"]
+emission_shape = 1
+emission_sphere_radius = 4.0
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 120.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_eclgj")
+anim_offset_max = 1.0
+
+[node name="Scout" type="CharacterBody2D" groups=["Enity", "Scout"]]
+collision_layer = 4
+collision_mask = 23
+motion_mode = 1
+script = ExtResource("1_obbqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_deitb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ymsuh")
+position = Vector2(40, 26)
+rotation = 1.5708
+texture = ExtResource("1_gmdf3")
+
+[node name="ScoutArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoutArea"]
+shape = SubResource("CircleShape2D_5cgry")
+
+[node name="Marker2D" type="Marker2D" parent="ScoutArea"]
+position = Vector2(116, -27)
+
+[node name="Marker2D2" type="Marker2D" parent="ScoutArea"]
+position = Vector2(121, 12)
+
+[node name="LaserCooldownTimer" type="Timer" parent="."]
+
+[node name="VulnerableTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="HitParticles" type="GPUParticles2D" parent="Particles"]
+modulate = Color(0.305882, 0.501961, 0.243137, 1)
+material = SubResource("CanvasItemMaterial_5hmrn")
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_tob00")
+texture = ExtResource("4_nu6j0")
+lifetime = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="ScoutArea" to="." method="_on_scout_area_body_entered"]
+[connection signal="body_exited" from="ScoutArea" to="." method="_on_scout_area_body_exited"]

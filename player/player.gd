@@ -36,6 +36,9 @@ func _process(_delta: float) -> void:
 	look_at(get_global_mouse_position())
 
 
+func be_hit() -> void:
+	Global.health -= 10
+	
 func handle_input() -> void:
 	input_movement = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	direction = input_movement.normalized();

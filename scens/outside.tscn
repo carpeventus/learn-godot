@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dv4hx2ub14jfa"]
+[gd_scene load_steps=18 format=3 uid="uid://dv4hx2ub14jfa"]
 
 [ext_resource type="PackedScene" uid="uid://bujrlyldyvu8j" path="res://scens/level.tscn" id="1_mmcix"]
 [ext_resource type="Texture2D" uid="uid://c36x33036fvtv" path="res://sprites/ground/stones.png" id="2_6ilep"]
@@ -14,6 +14,14 @@
 [ext_resource type="PackedScene" uid="uid://cdjrt4m6egm48" path="res://item/toilet.tscn" id="12_13314"]
 [ext_resource type="PackedScene" uid="uid://cffoay7f6hgk" path="res://item/crate.tscn" id="13_wib8w"]
 [ext_resource type="PackedScene" uid="uid://dxedg04oxkvtf" path="res://items/item.tscn" id="14_5gpur"]
+[ext_resource type="PackedScene" uid="uid://dmb8ft2iphr2s" path="res://enemies/car.tscn" id="15_rdjmj"]
+[ext_resource type="PackedScene" uid="uid://dbsw45w8dldqe" path="res://enemies/scout.tscn" id="15_sgjco"]
+
+[sub_resource type="Curve2D" id="Curve2D_dm67o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2140, 916, 0, 0, 0, 0, -1346, 1747, 0, 0, 0, 0, 531, 2263, 0, 0, 0, 0, 2479, 2574, 0, 0, 0, 0, 2357, 525, 0, 0, 0, 0, 1370, 42, 0, 0, 0, 0, 577, 672, 0, 0, 0, 0, -893, 1021, 0, 0, 0, 0, -2140, 916)
+}
+point_count = 9
 
 [node name="Outside" instance=ExtResource("1_mmcix")]
 script = ExtResource("2_j3021")
@@ -66,13 +74,26 @@ position = Vector2(164, 1110)
 [node name="Crate" parent="." index="4" instance=ExtResource("13_wib8w")]
 position = Vector2(-322, 1252)
 
-[node name="Player" parent="." index="5"]
-position = Vector2(977, 645)
+[node name="Enemies" parent="." index="5"]
+position = Vector2(611, 980)
 
-[node name="Camera2D" parent="." index="7"]
+[node name="Scout" parent="Enemies" index="0" instance=ExtResource("15_sgjco")]
+
+[node name="Path2D" type="Path2D" parent="Enemies" index="1"]
+position = Vector2(1537, 0)
+curve = SubResource("Curve2D_dm67o")
+
+[node name="Car" parent="Enemies/Path2D" index="0" instance=ExtResource("15_rdjmj")]
+position = Vector2(-2140, 916)
+rotation = 0.808163
+
+[node name="Player" parent="." index="7"]
 position = Vector2(977, 645)
 
 [node name="Item" parent="." index="8" instance=ExtResource("14_5gpur")]
 position = Vector2(923, 865)
+
+[node name="Camera2D" parent="." index="9"]
+position = Vector2(977, 645)
 
 [connection signal="gate_entered" from="Gate" to="." method="_on_gate_gate_entered"]

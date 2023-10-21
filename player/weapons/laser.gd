@@ -19,7 +19,7 @@ func change_direction(dir : Vector2) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position += direction * speed * delta;
+	global_position += direction * speed * delta;
 
 
 

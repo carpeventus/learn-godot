@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://autoload/global.gd"
 TranstionLayer="*res://autoload/transtion_layer.tscn"
+Music="*res://autoload/music.tscn"
 
 [debug]
 
@@ -29,6 +30,8 @@ gdscript/warnings/unused_parameter=0
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://sprites/ui/crosshair159.png"
+mouse_cursor/custom_image_hotspot=Vector2(17, 17)
 
 [dotnet]
 
